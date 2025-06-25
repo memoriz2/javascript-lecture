@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  background: url("card_836_1.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.calculator-container {
+  width: 700px;
+  margin: 60px auto;
+  padding: 40px 30px 30px 30px;
+  background: rgba(60, 60, 100, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 1.5px solid #aaa;
+}
+
+.calculator-title {
+  color: #ffe600;
+  font-size: 2.7rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.label {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+
+.input-box {
+  width: 90%;
+  padding: 18px 20px;
+  margin: 0 auto 22px auto;
+  border-radius: 40px;
+  border: 1.5px solid #fff;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.3rem;
+  outline: none;
+  display: block;
+  transition: border 0.2s;
+}
+
+.input-box:focus {
+  border: 1.5px solid #ffe600;
+}
+
+.calc-btn {
+  width: 95%;
+  padding: 18px 0;
+  background: #4a8cff;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 18px 0 30px 0;
+  transition: background 0.2s;
+}
+
+.calc-btn:hover {
+  background: #2566d6;
+}
+
+.result {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-top: 10px;
+}
+
+.result .em-value {
+  color: #ffe600;
+  font-weight: 700;
+  font-size: 2rem;
+}

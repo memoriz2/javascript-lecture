@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em 계산기</title>
+    <link rel="stylesheet" href="pxToEM.css" />
+  </head>
+  <body>
+    <main class="calculator-container">
+      <h1 class="calculator-title">em 계산기</h1>
+      <label for="baseFont" class="label">기본폰트(px)</label>
+      <input
+        type="number"
+        name="baseFont"
+        id="baseFont"
+        class="input-box"
+        placeholder="기본폰트(px)"
+      />
+      <label for="targetFont" class="label">원하는 px값</label>
+      <input
+        type="number"
+        name="targetFont"
+        id="targetFont"
+        class="input-box"
+        placeholder="원하는 px값"
+      />
+      <button type="button" id="button" class="calc-btn" onClick="calc()">
+        em값 계산
+      </button>
+      <div id="result" class="result"></div>
+      <script>
+        function calc() {
+          const baseFont = document.getElementById("baseFont").value;
+          const targetFont = document.getElementById("targetFont").value;
+          const result = targetFont / baseFont;
+          document.getElementById(
+            "result"
+          ).innerHTML = `${targetFont}px = <span class="em-value">${result}em</span>`;
+        }
+      </script>
+    </main>
+  </body>
+</html>

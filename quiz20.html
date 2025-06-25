@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <label for="input"></label>
+      <input type="text" id="input" placeholder="이름을 입력하세요" />
+      <button type="button" id="button" onClick="welcome()">인사하기</button>
+      <div id="result"></div>
+      <script>
+        function welcome() {
+          const input = document.getElementById("input");
+          const name = input.value;
+          console.log(`안녕하세요, ${name}님!`);
+        }
+      </script>
+    </main>
+  </body>
+</html>

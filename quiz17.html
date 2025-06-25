@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <label for="firstInput"></label>
+      <input type="number" id="firstInput" />
+      <label for="secondInput"></label>
+      <input type="number" id="secondInput" />
+      <button type="button" id="button" onClick="calc()">계산하기</button>
+      <div id="result"></div>
+      <script>
+        function calc() {
+          const firstInput = document.getElementById("firstInput");
+          const secondInput = document.getElementById("secondInput");
+          const first = +firstInput.value;
+          const second = +secondInput.value;
+          const result = first * second;
+          console.log(`${first} * ${second} = ${result}`);
+        }
+      </script>
+    </main>
+  </body>
+</html>
