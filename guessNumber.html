@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Guess a Number (1~10)</title>
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Noto Sans KR", Arial, sans-serif;
+      }
+      .game-box {
+        background: #fff;
+        border-radius: 40px;
+        box-shadow: 0 8px 32px 0 #e7b6e7a0;
+        padding: 60px 40px 50px 40px;
+        min-width: 400px;
+        text-align: center;
+      }
+      .game-title {
+        color: #f35fc5;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        font-weight: 700;
+      }
+      .input-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+      .num-input {
+        width: 100px;
+        height: 50px;
+        font-size: 2rem;
+        text-align: center;
+        border-radius: 16px;
+        border: 2px solid #f3c5e7;
+        background: #fdfbe9;
+        color: #e08adf;
+        outline: none;
+        transition: border 0.2s;
+      }
+      .num-input:focus {
+        border: 2px solid #f35fc5;
+      }
+      .submit-btn {
+        height: 50px;
+        min-width: 100px;
+        font-size: 1.2rem;
+        border-radius: 16px;
+        border: 2px solid #7a7aff;
+        background: #f35fc5;
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 2px 2px 8px #e7b6e7a0;
+        transition: background 0.2s, border 0.2s;
+      }
+      .submit-btn:active {
+        background: #d94bb3;
+      }
+      .result-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        margin-top: 30px;
+      }
+      .circle-num {
+        background: #eaf7fd;
+        color: #6a7aff;
+        font-size: 1.7rem;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .result-text {
+        font-size: 1.3rem;
+        color: #6a7aff;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-box">
+      <div class="game-title">Guess a Number(1~10)</div>
+      <div class="input-row">
+        <input
+          type="number"
+          id="userNum"
+          class="num-input"
+          min="1"
+          max="10"
+          placeholder="?"
+        />
+        <button class="submit-btn" onclick="checkNumber()">확인</button>
+      </div>
+      <div id="result" class="result-text" style="margin-top: 18px"></div>
+    </div>
+    <script>
+      let answer = Math.floor(Math.random() * 10) + 1;
+
+      function checkNumber() {
+        const userNum = Number(document.getElementById("userNum").value);
+        const result = document.getElementById("result");
+        if (!userNum || userNum < 1 || userNum > 10) {
+          result.textContent = "1~10 사이의 숫자를 입력하세요!";
+          return;
+        }
+        if (userNum > answer) {
+          result.textContent = `${userNum} → 너무 커요!`;
+        } else if (userNum < answer) {
+          result.textContent = `${userNum} → 너무 작아요!`;
+        } else {
+          result.textContent = `${userNum} 정답입니다! 🎉 (${answer})`;
+        }
+      }
+    </script>
+  </body>
+</html>

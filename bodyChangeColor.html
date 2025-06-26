@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문서의 배경색 바꾸기</title>
+    <style>
+      body {
+        min-height: 100vh;
+        background: #6a5acd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.13);
+        border: 1.5px solid #fff3;
+        border-radius: 20px;
+        box-shadow: 8px 8px 24px 0 #6a5acd44;
+        padding: 36px 40px;
+      }
+      .container label {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label for="colorSelect">문서의 배경색 바꾸기</label>
+      <select id="colorSelect">
+        <option value="#6a5acd">SlateBlue</option>
+        <option value="#87ceeb">SkyBlue</option>
+        <option value="#90ee90">LightGreen</option>
+        <option value="#ffd700">Gold</option>
+        <option value="#ff6347">Tomato</option>
+        <option value="#dda0dd">Plum</option>
+      </select>
+    </div>
+    <script>
+      const colorSelect = document.getElementById("colorSelect");
+      colorSelect.addEventListener("change", function () {
+        document.body.style.background = this.value;
+      });
+      // 초기값 적용
+      document.body.style.background = colorSelect.value;
+    </script>
+  </body>
+</html>
