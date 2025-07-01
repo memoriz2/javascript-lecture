@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Cafe 주문 계산기</title>
+    <style>
+      body {
+        background: #f7f7f7;
+        font-family: "Noto Sans KR", Arial, sans-serif;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .order-box {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 4px 32px #0001;
+        max-width: 480px;
+        padding: 40px 36px 32px 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+      }
+      .order-box h2 {
+        color: #6b4f13;
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      fieldset {
+        border: none;
+        padding: 0;
+        margin: 0 0 18px 0;
+      }
+      legend {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 6px;
+        padding: 0;
+      }
+      .order-select,
+      .order-input {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1.5px solid #ddd;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+      }
+      .order-btn {
+        width: 100%;
+        background: #7a5a1e;
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        padding: 16px 0;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.2s;
+      }
+      .order-btn:hover {
+        background: #5c4316;
+      }
+      .order-result {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #4b3a0a;
+        margin-top: 18px;
+        text-align: center;
+      }
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="order-box" aria-labelledby="order-title">
+        <h2 id="order-title">My Cafe 주문 계산기</h2>
+        <form id="orderForm" autocomplete="off">
+          <fieldset>
+            <legend>음료 선택</legend>
+            <label for="drink" class="visually-hidden">음료 선택</label>
+            <select id="drink" class="order-select" required>
+              <option value="">-- 음료를 선택하세요 --</option>
+              <option value="americano">아메리카노 (₩2,500)</option>
+              <option value="latte">카페라떼 (₩3,000)</option>
+              <option value="mocha">카페모카 (₩3,500)</option>
+              <option value="tea">홍차 (₩2,000)</option>
+              <option value="juice">오렌지주스 (₩2,800)</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>사이즈 선택</legend>
+            <label for="size" class="visually-hidden">사이즈 선택</label>
+            <select id="size" class="order-select" required>
+              <option value="medium">Medium (+₩0)</option>
+              <option value="large">Large (+₩2,000)</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>수량</legend>
+            <label for="count" class="visually-hidden">수량</label>
+            <input
+              type="number"
+              id="count"
+              class="order-input"
+              min="1"
+              value="1"
+              required
+            />
+          </fieldset>
+          <button type="submit" class="order-btn">계산하기</button>
+        </form>
+        <div id="result" class="order-result" aria-live="polite"></div>
+      </section>
+    </main>
+    <script>
+      const drinkMenu = {
+        americano: 2500,
+        latte: 3000,
+        mocha: 3500,
+        tea: 2000,
+        juice: 2800,
+      };
+      const sizeMenu = {
+        medium: 0,
+        large: 2000,
+      };
+      const sizeLabel = {
+        medium: "Medium",
+        large: "Large",
+      };
+
+      const orderForm = document.getElementById("orderForm");
+      const drinkSelect = document.getElementById("drink");
+      const sizeSelect = document.getElementById("size");
+      const countInput = document.getElementById("count");
+      const resultDiv = document.getElementById("result");
+
+      orderForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const drink = drinkSelect.value;
+        const size = sizeSelect.value;
+        const count = Number(countInput.value);
+
+        if (!drink) {
+          resultDiv.textContent = "음료를 선택하세요!";
+          return;
+        }
+        if (!size) {
+          resultDiv.textContent = "사이즈를 선택하세요!";
+          return;
+        }
+        if (!count || count < 1) {
+          resultDiv.textContent = "수량을 1 이상으로 입력하세요!";
+          return;
+        }
+
+        const total = (drinkMenu[drink] + sizeMenu[size]) * count;
+        resultDiv.innerHTML = `총 금액: <b>₩${total.toLocaleString()}</b> (${count}잔, ${
+          sizeLabel[size]
+        })`;
+      });
+    </script>
+  </body>
+</html>
