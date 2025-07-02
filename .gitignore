@@ -1,0 +1,16 @@
+# push한 파일 제외 모두 무시
+*
+!day_1.js
+!quiz17.html
+!quiz20.html
+!pxToEM.html
+!pxToEM.css
+!card_836_1.jpg
+!bodyChangeColor.html
+!guessNumber.html
+!day_2.js
+!day_3.js
+!401_review.js
+!myCafeOrder.html
+!day_06.js
+!.gitignore 
